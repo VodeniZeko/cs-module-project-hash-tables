@@ -118,6 +118,10 @@ class HashTable:
                 if current.key == key:
                     self.storage[index] = current.next
                     current.next = None
+                    self.num_items -= 1
+                    self.load_factor = self.num_items / self.capacity
+                    if self.load_factor <= 0.2:
+                        self.resize(self.capacity / 2)
                     return current.value
                 else:
                     current = current.next
