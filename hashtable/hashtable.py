@@ -41,7 +41,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return len(self.storage)
 
     def get_load_factor(self):
         """
@@ -49,7 +49,7 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        return self.load_factor
 
     def fnv1(self, key):
         """
@@ -97,8 +97,10 @@ class HashTable:
                         break
         else:
             self.storage[index] = HashTableEntry(key, value)
-        self.num_items += 1
-        self.load_factor = self.num_items / self.capacity
+            self.num_items += 1
+            self.load_factor = self.num_items / self.capacity
+            if self.load_factor > 0.7:
+                self.resize(self.capacity * 2)
 
     def delete(self, key):
         """
@@ -148,7 +150,6 @@ class HashTable:
         """
         Changes the capacity of the hash table and
         rehashes all key/value pairs.
-
         Implement this.
         """
         # Your code here
