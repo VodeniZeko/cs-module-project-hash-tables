@@ -5,6 +5,7 @@ def no_dups(s):
     for word in words:
         if word not in table:
             table[word] = word
+
     s_no_dups = ' '.join(table)
     return s_no_dups
 
